@@ -1,0 +1,4 @@
+#negeer volgende bestanden voor versiebeheer in git
+node_modules
+.env 
+
