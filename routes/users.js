@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
         const [rows] = await db.query('SELECT * FROM users'); //Probeer de user-records op te halen in de database.
         res.json(rows); //
     } catch (err) { // Lukt het niet, toon dan een error.
-        res.status(500).json({ erro: err.message });
+        res.status(500).json({ error: err.message });
     }
 
 });
@@ -44,6 +44,21 @@ router.post('/', async (req, res) => {
         return res.status(400).json({ error: "Alle velden zijn verplicht" }); //Bad Request foutmelding (fout ligt bij gebruiker)
     }
 
+    //Controle voornaam geldig?
+    if (!/^[A-Za-z-\s]+$/.test(first_name)){ //Regex: ^ = start van tekst, [A-Za-z-\s] letters of streepje bevatten en spaties, + = één of meer tekens, $ = einde tekst
+        return res.status(400).json({ error: "Voornaam mag geen cijfers bevatten"})
+    }
+
+    //Controle achternaam geldig?
+    if (!/^[A-Za-z-\s]+$/.test(last_name)){ //Regex: ^ = start van tekst, [A-Za-z-\s] letters of streepje bevatten en spaties, + = één of meer tekens, $ = einde tekst
+        return res.status(400).json({ error: "Achternaam mag geen cijfers bevatten"})
+    }
+    //Controle e-mail geldig
+    if(!/^\S+@\S+\.\S+$/.test(email)){ //Regex: ^ : start, \S (geen spaties), + = meerdere tekens, \. = punt, ... $= einde
+        return res.status(400).json({ error: "Ongeldig e-mailadres"})
+    }
+
+
     try {
         const sql = 'INSERT INTO users (first_name, last_name, email) VALUES (?, ?, ?)';
         const [result] = await db.query(sql, [first_name, last_name, email])
@@ -68,6 +83,20 @@ router.put('/:id', async (req, res) => {
     // Basisvalidatie: velden mogen niet leeg zijn
     if (!first_name || !last_name || !email) {
         return res.status(400).json({ error: "Alle velden zijn verplicht" })
+    }
+
+    //Controle voornaam geldig?
+    if (!/^[A-Za-z-\s]+$/.test(first_name)){ //Regex: ^ = start van tekst, [A-Za-z-\s] letters of streepje bevatten en spaties, + = één of meer tekens, $ = einde tekst
+        return res.status(400).json({ error: "Voornaam mag geen cijfers bevatten"})
+    }
+
+    //Controle achternaam geldig?
+    if (!/^[A-Za-z-\s]+$/.test(last_name)){ //Regex: ^ = start van tekst, [A-Za-z-\s] letters of streepje bevatten en spaties, + = één of meer tekens, $ = einde tekst
+        return res.status(400).json({ error: "Achternaam mag geen cijfers bevatten"})
+    }
+    //Controle e-mail geldig
+    if(!/^\S+@\S+\.\S+$/.test(email)){ //Regex: ^ : start, \S (geen spaties), + = meerdere tekens, \. = punt, ... $= einde
+        return res.status(400).json({ error: "Ongeldig e-mailadres"})
     }
 
     try {

@@ -9,9 +9,52 @@ router.get('/', async (req, res) => {
         const [rows] = await db.query('SELECT * FROM posts'); //Probeer de post-records op te halen in de database.
         res.json(rows); //
     } catch (err) { // Lukt het niet, toon dan een error.
-        res.status(500).json({ erro: err.message });
+        res.status(500).json({ error: err.message });
     }
 
+});
+
+//Verkijgen (GET) van posts met limit en offset
+router.get('/paged', async (req,res) => {
+    const {limit, offset} = req.query
+
+    if(!limit || !offset){ //Indien geen limit/offset opgegeven > stuur foutbooschap
+        return res.status(400).json({error: "Limit en offset zijn verplicht"});
+    }
+
+    if(isNaN(limit) || isNaN(offset)) { //Indien limit/offset geen nummers > stuur foutboodschap
+        return res.status(400).json({ error: "Limit en offset moeten nummers zijn"});
+    }
+
+    try {
+        const sql = "SELECT * FROM posts LIMIT ? OFFSET ?"
+        const [rows] = await db.query(sql, [parseInt(limit), parseInt(offset)]);
+        res.json(rows);
+    } catch (err) {
+        res.status(500).json({ error: err.message})
+    }
+});
+
+router.get('/search', async (req, res) => {
+    const {term} = req.query;
+
+    if(!term){
+        return res.status(400).json({ error: "Zoekterm is verplicht"})
+    }
+
+    try {
+        const sql= `
+        SELECT * FROM posts
+        WHERE title LIKE ? OR content LIKE ?
+        `;
+
+        const searchTerm = `%${term}%`;
+        const [rows] = await db.query(sql, [searchTerm, searchTerm]);
+
+        res.json(rows);
+    } catch (err){
+        res.status(500).json({ error: err.message});
+    }
 });
 
 //Verkrijgen (GET) voor één entiteit
@@ -44,6 +87,11 @@ router.post('/', async (req, res) => {
         return res.status(400).json({ error: "Alle velden zijn verplicht" }); //Bad Request foutmelding (fout ligt bij gebruiker)
     }
 
+    //Validatie of user een nummer is
+    if(isNaN(user_id)) {
+        return res.status(400).json({ error: "user_id moet een nummer zijn"})
+    }
+
     try {
         const sql = 'INSERT INTO posts (title, content, user_id) VALUES (?, ?, ?)';
         const [result] = await db.query(sql, [title, content, user_id ])
@@ -68,6 +116,11 @@ router.put('/:id', async (req, res) => {
     // Basisvalidatie: velden mogen niet leeg zijn
     if (!title || !content || !user_id) {
         return res.status(400).json({ error: "Alle velden zijn verplicht" })
+    }
+
+    //Validatie of user een nummer is
+    if(isNaN(user_id)) {
+        return res.status(400).json({ error: "user_id moet een nummer zijn"})
     }
 
     try {
@@ -125,3 +178,4 @@ router.delete('/:id', async(req, res) => {
 });
 
 module.exports = router;
+
