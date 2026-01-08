@@ -53,6 +53,10 @@ De volledige uitleg staat op `index.html`.
 5. Documentatiepagina op de root van het project
 6. Foutafhandeling bij alle endpoints
 
+## Extra functionaliteiten
+1. Zoeken op zowel titel als content (posts)
+2. Sorteren van GET-request op basis van voornaam, naam of mail -> aflopend of oplopend
+
 ## Extra informatie
 
 - De mappen `node_modules` & `.env` staan in `.gitignore`.
