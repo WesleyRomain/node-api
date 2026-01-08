@@ -3,9 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>API documentatie - Node.js project</title>
 </head>
 <body>
-    <p>Hey! Je server werkt!</p>
+    <h1>API documentatie</h1>
+    <p>Dit is de documentatiepagina voor mijn Node.js + Express API. De API omvat twee entiteiten: <strong>users</strong> en <strong></strong>posts</strong>.</p>
+
+    <h2>Users endpoints</h2>
+    <ul>
+        <li><strong>GET</strong> /api/users - Alle users ophalen</li>
+        <li><strong>GET</strong> /api/users/:id - Eén specifieke user ophalen op basis id</li>
+        <li><strong>POST</strong> /api/users - Nieuwe user toevoegen</li>
+        <li><strong>PUT</strong> /api/users/:id - Bestaande user updaten</li>
+        <li><strong>DELETE</strong> /api/users/:id - Bestaande user verwijderen</li>
+    </ul>
+
+    <h2>Posts endpoints</h2>
+    <ul>
+        <li><strong>GET</strong> /api/posts - Alle posts ophalen</li>
+        <li><strong>GET</strong> /api/posts/:id - Eén specifieke post ophalen op basis van id</li>
+        <li><strong>POST</strong> /api/posts - Nieuwe posst toevoegen</li>
+        <li><strong>PUT</strong> /api/posts/:id - Bestaande post updaten</li>
+        <li><strong>DELETE</strong> /api/posts/:id - Bestaande post verwijderen</li>
+        <li><strong>GET</strong> /api/posts/paged?limit=&amp;offset= - Posts ophalen met paginatie</li>
+        <li><strong>GET</strong> /api/posts/search?term= - Posts zoeken op titel of inhoud</li>
+    </ul>
+
+    <h2>Parameters</h2>
+    <ul>
+        <li><strong>:id</strong> - Dynamische parameter voor specifieke user of post</li>
+        <li><strong>limit</strong> - Aantal resultaten dat wordt teruggeven</li>
+        <li><strong>offset</strong> - Startpositie in de lijst met resultaten</li>
+        <li><strong>term</strong> - zoekterm voor de search endpoints</li>
+    </ul>
+
+    <h2>Voorbeelden</h2>
+    <ul>
+        <li><code>GET /api/posts/paged?limit=5&amp;offset=0</code></li>
+        <li><code>GET /api/posts/search?term=Wesley</code></li>
+        <li><code>POST /api/posts</code> met JSON body: <code>{"title: "...", "content": "...", "user_id: 1"}</code></li>
+    </ul>
 </body>
 </html>
