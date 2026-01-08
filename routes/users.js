@@ -14,6 +14,28 @@ router.get('/', async (req, res) => {
 
 });
 
+//Verkrijgen (GET) voor alle users + sorteren (EXTRA FEATURE)
+router.get('/sort', async (req, res) => {
+    let {sort, order}= req.query; //Query uitlezen
+
+    //Toegelaten sorteerbare velden (vermijden SQL-injectie)
+    const allowedSortFields = ["id", "first_name", "last_name", "email"];
+    const allowedOrder = ["asc", "desc"];
+
+    //Als er een variabele wordt ingegeven die niet overeenstemt met de opgenomen lijst -> val terug op de deafaults (beveiliging tegen SQL-injecties)
+    if (!allowedSortFields.includes(sort)) sort="id";
+    if (!allowedOrder.includes(order)) order="asc";
+
+    try{
+        const sql =`SELECT * FROM users ORDER BY ${sort} ${order}`;
+        const [rows] = await db.query(sql);
+
+        res.json(rows);
+    } catch (err){
+        res.status(500).json({ error: err.message});
+    }
+})
+
 //Verkrijgen (GET) voor één entiteit
 router.get('/:id', async (req, res) => {
     const { id } = req.params;

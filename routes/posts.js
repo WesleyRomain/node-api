@@ -3,7 +3,6 @@ const router = express.Router();
 const db = require('../db');
 
 //Verkrijgen (GET) van alle posts
-
 router.get('/', async (req, res) => {
     try {
         const [rows] = await db.query('SELECT * FROM posts'); //Probeer de post-records op te halen in de database.
@@ -35,6 +34,7 @@ router.get('/paged', async (req,res) => {
     }
 });
 
+//Verkrijgen (GET) van posts op basis van titel OF content (EXTRA FEATURE)
 router.get('/search', async (req, res) => {
     const {term} = req.query;
 
