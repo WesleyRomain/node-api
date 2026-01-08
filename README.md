@@ -28,7 +28,8 @@ De volledige uitleg staat op `index.html`.
 
 ### Users
 - GET `/api/users`
-- GET `/api/users:id`
+- GET `/api/users/:id`
+- GET `/api/users/sort?sort=&order=`
 - POST `/api/users` 
 - PUT `/api/users/:id` 
 - DELETE `/api/users/:id` 
@@ -59,7 +60,7 @@ De volledige uitleg staat op `index.html`.
 
 ## Extra informatie
 
-- De mappen `node_modules` & `.env` staan in `.gitignore`.
+- De map `node_modules` staat in `.gitignore`.
 - De API gebruikt Express Router voor een overzichtelijke structuur.
 - De server draait standaard op poort 3000.
 - Tijdens de ontwikkeling werd gebruikgemaakt van **nodemon** om de server om de server automatisch te herstarten bij wijzigingen (optioneel voor testen).

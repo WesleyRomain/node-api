@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>API documentatie</h1>
-    <p>Dit is de documentatiepagina voor mijn Node.js + Express API. De API omvat twee entiteiten: <strong>users</strong> en <strong></strong>posts</strong>.</p>
+    <p>Dit is de documentatiepagina voor mijn Node.js + Express API. De API omvat twee entiteiten: <strong>users</strong> en <strong>posts</strong>.</p>
 
     <h2>Users endpoints</h2>
     <ul>
@@ -16,13 +16,14 @@
         <li><strong>POST</strong> /api/users - Nieuwe user toevoegen</li>
         <li><strong>PUT</strong> /api/users/:id - Bestaande user updaten</li>
         <li><strong>DELETE</strong> /api/users/:id - Bestaande user verwijderen</li>
+        <li><strong>GET</strong> /api/users/sort?sort=&amp;order= - Users sorteren op kolom en volgorde</li>
     </ul>
 
     <h2>Posts endpoints</h2>
     <ul>
         <li><strong>GET</strong> /api/posts - Alle posts ophalen</li>
         <li><strong>GET</strong> /api/posts/:id - Eén specifieke post ophalen op basis van id</li>
-        <li><strong>POST</strong> /api/posts - Nieuwe posst toevoegen</li>
+        <li><strong>POST</strong> /api/posts - Nieuwe post toevoegen</li>
         <li><strong>PUT</strong> /api/posts/:id - Bestaande post updaten</li>
         <li><strong>DELETE</strong> /api/posts/:id - Bestaande post verwijderen</li>
         <li><strong>GET</strong> /api/posts/paged?limit=&amp;offset= - Posts ophalen met paginatie</li>
@@ -34,14 +35,17 @@
         <li><strong>:id</strong> - Dynamische parameter voor specifieke user of post</li>
         <li><strong>limit</strong> - Aantal resultaten dat wordt teruggeven</li>
         <li><strong>offset</strong> - Startpositie in de lijst met resultaten</li>
-        <li><strong>term</strong> - zoekterm voor de search endpoints</li>
+        <li><strong>term</strong> - Zoekterm voor de search endpoints</li>
+        <li><strong>sort</strong> - Kolomnaam om op te sorteren (bv. name, email, created_at)</li> 
+        <li><strong>order</strong> - Sorteervolgorde: asc of desc</li>
     </ul>
 
     <h2>Voorbeelden</h2>
     <ul>
         <li><code>GET /api/posts/paged?limit=5&amp;offset=0</code></li>
         <li><code>GET /api/posts/search?term=Wesley</code></li>
-        <li><code>POST /api/posts</code> met JSON body: <code>{"title: "...", "content": "...", "user_id: 1"}</code></li>
+        <li><code>POST /api/posts</code> met JSON body: <code>{"title": "...", "content": "...", "user_id": 1}</code></li>
+        <li><code>GET /api/users/sort?sort=first_ame&amp;order=asc</code></li>
     </ul>
 </body>
 </html>
