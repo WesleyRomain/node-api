@@ -63,12 +63,22 @@ De volledige uitleg staat op `index.html`.
 ## Bronvermelding (APA-stijl)
 
 Aertssens, T. (2023). *Web Essentials* [Cursus]. Erasmushogeschool Brussel.
+
 De Boeck, W. (2024). *Web Advanced* [Cursus]. Erasmushogeschool Brussel.
+
 Dotenv. (2026). *Dotenv documentation*. Geraadpleegd via https://www.npmjs.com/package/dotenv
+
 Express. (2026). *Express.js documentation*. Geraadpleegd via https://expressjs.com/
+
 Heyman, B. (2025–2026). *Backend Web* [Cursus]. Erasmushogeschool Brussel.
+
 MDN Web Docs. (2026). *Template literals*. Geraadpleegd via https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+
 MySQL2. (2026). *MySQL2 documentation*. Geraadpleegd via https://www.npmjs.com/package/mysql2
+
 Nodemon. (2026). *Nodemon documentation*. Geraadpleegd via https://www.npmjs.com/package/nodemon
+
 RESTful API. (2026). *RESTful API design guidelines*. Geraadpleegd via https://restfulapi.net/
+
 YouTube. (2026). *Algemene oriëntatie project* [Video]. Bekeken op 04/01/2026, van https://www.youtube.com/watch?v=_7UQPve99r4
+
