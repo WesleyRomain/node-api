@@ -14,7 +14,7 @@ Volg de stappen om het project lokaal te installeren en runnen:
 1. Clone de GitHub-repository naar je computer.
 2. Open de projectmap.
 3. Installeer de benodigde Node-modules.
-4. Maak een MySQL-database aan voor users (Kolommen: first_name, last_name, email) en posts (title, content, user_id).
+4. Maak een MySQL-database aan voor users (Kolommen: first_name, last_name, email) en posts (title, content, user_id) En start via XAMPP MySQL en Apache.
 5. Maak een `.env`-bestand aan in de root van het project met je databasegegevens (host,user, password, databasenaam en poort).
 6. Start de server (npm run dev).
 7. Open de browser en ga naar `http://localhost:3000` om de documentatiepagina te bekijken.
