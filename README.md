@@ -64,6 +64,7 @@ De volledige uitleg staat op `index.html`.
 - De API gebruikt Express Router voor een overzichtelijke structuur.
 - De server draait standaard op poort 3000.
 - Tijdens de ontwikkeling werd gebruikgemaakt van **nodemon** om de server om de server automatisch te herstarten bij wijzigingen (optioneel voor testen).
+- AI werd gebruikt ter ondersteuning van dit project. De architectuur, basislogica, validaties en functionaliteiten zijn zelfstandig uitgewerkt.
 
 ## Bronvermelding (APA-stijl)
 
